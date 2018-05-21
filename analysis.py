@@ -32,7 +32,7 @@ def main():
             if(key.startswith("Series")):
                 a = args.ws*i
                 b = args.ww+args.ws*i
-                print(hill(d[key][a:b],
+                print(hill(np.abs(d[key][a:b]),
                            args.threshold))
 
 
