@@ -19,3 +19,9 @@ Reads the cashflow-data `54datasets3.csv` from data/ and outputs the following f
 where the first contains the "independent components" extracted from the first 10 companies time series when
 the holidays have been removed from the data and the second one the same with the holidays
 
+## TODO
+
+* Daily rolling window. (Component 1 is the most interesting one)
+* I.i.d. vs. time series simu (generating time series data)
+* Convert from x > 0 to abs(x) when componentwise EV.
+* Time series ICA: SOBI
