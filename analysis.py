@@ -5,6 +5,8 @@ import argparse
 parser = argparse.ArgumentParser(description='Process some integers.')
 parser.add_argument('ifile', metavar='ifile', type=str,
                     help='input file')
+parser.add_argument('ofile', metavar='ofile', type=str,
+                    help='output file')
 parser.add_argument('threshold', metavar='threshold', type=int,
                     help='threshold value (k_n)')
 parser.add_argument('ww', metavar='window_width', type=int,
@@ -26,14 +28,17 @@ def main():
 
     length = len(d["Date"])
     iters = int(np.floor((length-args.ww)/args.ws))
-    print(iters)
+    out = []
     for i in range(iters):
         for key in d.keys():
             if(key.startswith("Series")):
                 a = args.ws*i
                 b = args.ww+args.ws*i
-                print(hill(np.abs(d[key][a:b]),
-                           args.threshold))
+                out += [hill(np.abs(d[key][a:b]),
+                                    args.threshold)]
+    with open(args.ofile, "w") as f:
+        for i in out:
+            f.write("%s\n" %i)
 
 
 if __name__ == "__main__":
